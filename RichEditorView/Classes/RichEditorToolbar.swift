@@ -51,7 +51,7 @@ import UIKit
     
     @objc func buttonWasTapped() {
         actionHandler?()
-    }x
+    }
 }
 
 /// RichEditorToolbar is UIView that contains the toolbar for actions that can be performed on a RichEditorView
