@@ -17,11 +17,21 @@
 
 var RE = {};
 
+let compositionMode = false;
+
 window.onload = function() {
     RE.callback("ready");
 };
 
 RE.editor = document.getElementById('editor');
+
+document.addEventListener('compositionstart',function() {
+    compositionMode = true;
+});
+
+document.addEventListener('compositionend',function() {
+    compositionMode = false;
+});
 
 // Not universally supported, but seems to work in iOS 7 and 8
 document.addEventListener("selectionchange", function() {
@@ -154,8 +164,30 @@ RE.redo = function() {
 };
 
 RE.setBold = function() {
+    var sel = document.getSelection();
+    if (sel && (sel.type == "Range")) {
+//        document.execCommand('insertHtml', false, '<div>&nbsp;<\div>')
+//        document.execCommand('insertText', false, '\n12');
+//        document.execCommand('delete', false , null)
+//        document.execCommand('delete', false , null)
+//        document.execCommand('delete', false , null)
+//        setTimeout(() => {
+//          document.execCommand("undo", false, null);
+//        }, 3000);
+    }
     document.execCommand('bold', false, null);
+//    document.execCommand('insertHtml',false, '&#8203;&#8203;')
+//    document.execCommand('insertHtml',false, '\u200b\u200b\u200b\u200b')
+//    RE.editor.blur();
+//    RE.restorerange();
+//    RE.insertHtml('123')
+//    document.execCommand('insertText',true, '1');
+    
+//    document.execCommand('insertHtml',false, '\u200b\u200b\u200b\u200b')
+//    document.execCommand('insertHtml',false, '&#8203;&#8203;')
+//    document.execCommand('insertText',false, '\u200b')
 };
+
 
 RE.setItalic = function() {
     document.execCommand('italic', false, null);
@@ -199,6 +231,17 @@ RE.setIndent = function() {
     document.execCommand('indent', false, null);
 };
 
+RE.lineBreak = function() {
+    RE.restorerange();
+    document.execCommand("insertHtml", false, "<br>");
+}
+
+
+RE.addSpace = function() {
+    document.execCommand("insertHtml", false, "&nbsp;");
+}
+
+
 RE.setOutdent = function() {
     document.execCommand('outdent', false, null);
 };
@@ -231,14 +274,18 @@ RE.setLineHeight = function(height) {
     RE.editor.style.lineHeight = height;
 };
 
-RE.insertImage = function(url, alt) {
+RE.insertImage = function(url, alt, width, height) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
+    img.width = width
+    img.height = height
     img.onload = RE.updateHeight;
 
-    RE.insertHTML(img.outerHTML);
+    RE.insertHTML("<div><br><div>" + img.outerHTML + "<div><br></div>");
     RE.callback("input");
+    
+    
 };
 
 RE.setBlockquote = function() {
@@ -332,6 +379,16 @@ RE.focusAtPoint = function(x, y) {
 RE.blurFocus = function() {
     RE.editor.blur();
 };
+
+RE.getCursor = function getPosition() {
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt) {
+            return sel.getRangeAt(0).startOffset;
+        }
+    }
+    return null;
+}
 
 /**
 Recursively search element ancestors to find a element nodeName e.g. A

@@ -23,6 +23,8 @@ html {
 body {
     min-height: 100%;
     overflow: auto;
+    font-size: 12px !important;
+    -webkit-text-size-adjust: none;
 }
 
 body, h1, p {
@@ -46,7 +48,7 @@ div {
 .placeholder[placeholder]:after {
     content: attr(placeholder);
     position: absolute;
-    top: 0px;
+    top: -5px;
     color: #cccccc;
 }
 
@@ -57,5 +59,6 @@ div {
     display: block;
     font-family: 'HelveticaNeue';
     color:#666666;
-    font-size: 12pt;
+    font-size: 12pt !important;
+/*    direction:rtl !important;*/
 }

@@ -22,6 +22,13 @@ import UIKit
 
     /// Called when the Insert Link toolbar item is pressed.
     @objc optional func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar)
+    
+    /// Called when the bold toolbar item is pressed.
+    @objc optional func richEditorToolbarBold(_ toolbar: RichEditorToolbar)
+    
+    @objc optional func richEditorToolbarTextConverter(_ toolbar: RichEditorToolbar)
+    
+    @objc optional func richEditorToolbarBackToMain(_ toolbar: RichEditorToolbar)
 }
 
 /// RichBarButtonItem is a subclass of UIBarButtonItem that takes a callback as opposed to the target-action pattern
@@ -44,7 +51,7 @@ import UIKit
     
     @objc func buttonWasTapped() {
         actionHandler?()
-    }
+    }x
 }
 
 /// RichEditorToolbar is UIView that contains the toolbar for actions that can be performed on a RichEditorView
