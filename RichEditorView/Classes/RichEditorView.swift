@@ -295,7 +295,7 @@ private let DefaultInnerLineHeight: Int = 28
     }
     
     public func underline() {
-        runJS("REs.setUnderline();")
+        runJS("RE.setUnderline();")
     }
     
     public func setTextColor(_ color: UIColor) {
