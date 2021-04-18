@@ -365,7 +365,7 @@ RE.focus = function() {
     var selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
-    RE.editor.focus();
+    RE.editor.focus();    
 };
 
 RE.focusAtPoint = function(x, y) {

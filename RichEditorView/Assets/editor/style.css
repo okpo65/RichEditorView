@@ -34,11 +34,13 @@ body, h1, p {
 div {
     display: block;
     position: static;
+    caret-color: rgba(0,176,255,1);
 }
 
 #editor {
-    -webkit-user-select: auto !important;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: text;
+    user-select: text;
+    caret
 }
 
 #editor:focus {
@@ -47,18 +49,17 @@ div {
 
 .placeholder[placeholder]:after {
     content: attr(placeholder);
-    position: absolute;
-    top: -5px;
-    color: #cccccc;
+    position: absolute !important;
+    top: -5px !important;
+    color: rgba(0,0,0,0.3);
 }
 
 #editor {
-    min-height: 100%;
+    min-height: 300px;
     height: 100%;
     overflow: auto;
     display: block;
     font-family: 'HelveticaNeue';
     color:#666666;
     font-size: 12pt !important;
-/*    direction:rtl !important;*/
 }
