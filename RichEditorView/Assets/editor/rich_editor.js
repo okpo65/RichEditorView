@@ -135,7 +135,7 @@ RE.updatePlaceholder = function() {
     if (RE.editor.innerHTML.indexOf('img') !== -1 || (RE.editor.textContent.length > 0 && RE.editor.innerHTML.length > 0)) {
         RE.editor.classList.remove("placeholder");
     } else {
-        RE.editor.classList.add("placeholder");
+        // RE.editor.classList.add("placeholder");
     }
 };
 
