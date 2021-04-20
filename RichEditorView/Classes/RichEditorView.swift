@@ -25,10 +25,8 @@ import WebKit
     @objc optional func richEditorLostFocus(_ editor: RichEditorView)
     
     /// Called when the RichEditorView has become ready to receive input
-    /// More concretely, is called when the internal UIWebView loads for the first time, and contentHTML is set
     @objc optional func richEditorDidLoad(_ editor: RichEditorView)
     
-    /// Called when the internal UIWebView begins loading a URL that it does not know how to respond to
     /// For example, if there is an external link, and then the user taps it
     @objc optional func richEditor(_ editor: RichEditorView, shouldInteractWith url: URL) -> Bool
     
@@ -61,7 +59,6 @@ private let DefaultInnerLineHeight: Int = 28
         set { webView.accessoryView = newValue }
     }
 
-    /// The internal UIWebView that is used to display the text.
     open private(set) var webView: RichEditorWebView
 
     /// Whether or not scroll is enabled on the view.
@@ -386,7 +383,7 @@ private let DefaultInnerLineHeight: Int = 28
         runJS("RE.addSpace()")
     }
 
-    /// Runs some JavaScript on the UIWebView and returns the result
+    
     /// If there is no result, returns an empty string
     /// - parameter js: The JavaScript string to be run
     /// - returns: The result of the JavaScript that was run
