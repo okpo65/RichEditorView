@@ -9,6 +9,4 @@
 #ifndef RichEditorView_RichEditorView_Bridging_Header_h
 #define RichEditorView_RichEditorView_Bridging_Header_h
 
-#import "CJWWebView+HackishAccessoryHiding.h"
-
 #endif
