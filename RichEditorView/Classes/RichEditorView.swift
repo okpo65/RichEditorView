@@ -291,6 +291,7 @@ private let DefaultInnerLineHeight: Int = 28
         runJS("RE.setStrikeThrough();")
     }
     
+    // why didn't changed?
     public func underline() {
         runJS("RE.setUnderline();")
     }
